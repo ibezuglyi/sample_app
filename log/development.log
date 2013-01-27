@@ -993,3 +993,387 @@ Migrating to AddSaltToUsers (20130124194709)
   [1m[36m (16.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130123215152')[0m
   [1m[35m (18.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130124192455')
   [1m[36m (20.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130123204701')[0m
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (56.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "encrypted_password" varchar(255), "salt" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (18.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (20.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (32.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (18.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130124194709')[0m
+  [1m[35m (21.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130123215152')
+  [1m[36m (18.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130124192455')[0m
+  [1m[35m (22.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130123204701')
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-25 20:07:54 +0100
+  Processing by PagesController#home as HTML
+Rendered pages/home.html.erb within layouts/application (34.4ms)
+Rendered layouts/_stylesheets.html.erb (9.1ms)
+Rendered layouts/_header.html.erb (1.5ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 86ms (Views: 85.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-25 20:07:55 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-01-25 20:08:04 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 404 Not Found in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with id=1):
+  app/controllers/users_controller.rb:7:in `show'
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.8ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2013-01-25 20:08:09 +0100
+
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-25 22:37:45 +0100
+  Processing by PagesController#home as HTML
+Rendered pages/home.html.erb within layouts/application (47.6ms)
+Rendered layouts/_stylesheets.html.erb (10.3ms)
+Rendered layouts/_header.html.erb (1.7ms)
+Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 146ms (Views: 145.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-25 22:37:46 +0100
+Served asset /custom.css - 404 Not Found (15ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-01-25 22:37:58 +0100
+  Processing by UsersController#new as HTML
+Rendered users/new.html.erb within layouts/application (8.2ms)
+Rendered layouts/_stylesheets.html.erb (9.1ms)
+Rendered layouts/_header.html.erb (1.1ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-25 22:37:58 +0100
+Served asset /custom.css - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-25 22:49:04 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('') LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (3.4ms)
+Rendered users/new.html.erb within layouts/application (6.7ms)
+Rendered layouts/_stylesheets.html.erb (8.0ms)
+Rendered layouts/_header.html.erb (1.2ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 111ms (Views: 22.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-25 22:49:04 +0100
+Served asset /custom.css - 404 Not Found (23ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-25 22:49:09 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.0ms)[0m  SELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('') LIMIT 1
+Rendered shared/_error_messages.html.erb (2.7ms)
+Rendered users/new.html.erb within layouts/application (5.8ms)
+Rendered layouts/_stylesheets.html.erb (8.0ms)
+Rendered layouts/_header.html.erb (1.6ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 31ms (Views: 21.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-25 22:49:09 +0100
+Served asset /custom.css - 404 Not Found (47ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (24.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-26 17:49:18 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('') LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (3.8ms)
+Rendered users/new.html.erb within layouts/application (6.0ms)
+Rendered layouts/_stylesheets.html.erb (7.7ms)
+Rendered layouts/_header.html.erb (2.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 31ms (Views: 21.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-26 17:49:19 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-27 20:30:33 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('') LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (3.5ms)
+Rendered users/new.html.erb within layouts/application (30.4ms)
+Rendered layouts/_stylesheets.html.erb (41.8ms)
+Rendered layouts/_header.html.erb (1.5ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 205ms (Views: 128.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:30:35 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (4.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-27 20:30:46 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"qwert", "email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('example@railstutorial.org') LIMIT 1
+Rendered shared/_error_messages.html.erb (1.1ms)
+Rendered users/new.html.erb within layouts/application (3.6ms)
+Rendered layouts/_stylesheets.html.erb (8.8ms)
+Rendered layouts/_header.html.erb (1.1ms)
+Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 29ms (Views: 20.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:30:46 +0100
+Served asset /custom.css - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2013-01-27 20:30:56 +0100
+
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-01-27 20:31:00 +0100
+  Processing by UsersController#new as HTML
+Rendered shared/_error_messages.html.erb (0.0ms)
+Rendered users/new.html.erb within layouts/application (7.4ms)
+Rendered layouts/_stylesheets.html.erb (13.1ms)
+Rendered layouts/_header.html.erb (1.2ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:31:00 +0100
+Served asset /custom.css - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-01-27 20:32:03 +0100
+  Processing by UsersController#new as HTML
+Rendered shared/_error_messages.html.erb (0.1ms)
+Rendered users/new.html.erb within layouts/application (8.8ms)
+Rendered layouts/_stylesheets.html.erb (12.0ms)
+Rendered layouts/_header.html.erb (1.1ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 27ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:32:03 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (12.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-01-27 20:32:04 +0100
+  Processing by UsersController#new as HTML
+Rendered shared/_error_messages.html.erb (0.0ms)
+Rendered users/new.html.erb within layouts/application (7.2ms)
+Rendered layouts/_stylesheets.html.erb (31.5ms)
+Rendered layouts/_header.html.erb (1.9ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 46ms (Views: 45.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:32:05 +0100
+Served asset /custom.css - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (5.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-27 20:32:07 +0100
+  Processing by PagesController#home as HTML
+Rendered pages/home.html.erb within layouts/application (0.6ms)
+Rendered layouts/_stylesheets.html.erb (8.1ms)
+Rendered layouts/_header.html.erb (1.2ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 18ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:32:07 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-27 20:32:36 +0100
+  Processing by PagesController#home as HTML
+Rendered pages/home.html.erb within layouts/application (0.1ms)
+Rendered layouts/_stylesheets.html.erb (8.8ms)
+Rendered layouts/_header.html.erb (1.1ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:32:36 +0100
+Served asset /custom.css - 404 Not Found (68ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2013-01-27 20:32:42 +0100
+  Processing by UsersController#new as HTML
+Rendered shared/_error_messages.html.erb (0.0ms)
+Rendered users/new.html.erb within layouts/application (6.9ms)
+Rendered layouts/_stylesheets.html.erb (8.3ms)
+Rendered layouts/_header.html.erb (2.1ms)
+Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 26ms (Views: 25.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:32:42 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-27 20:33:08 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"qwerty", "email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('example@railstutorial.org') LIMIT 1[0m
+Rendered shared/_error_messages.html.erb (0.5ms)
+Rendered users/new.html.erb within layouts/application (2.7ms)
+Rendered layouts/_stylesheets.html.erb (9.6ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (2.4ms)
+Completed 200 OK in 52ms (Views: 21.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:33:08 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-01-27 20:33:21 +0100
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+/lVfPSfoX3PNnetvNVMHIBCAWskkJ6Y/ASaspRvqZE=", "user"=>{"name"=>"qwerty", "email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('example@railstutorial.org') LIMIT 1
+  [1m[36mSQL (2.9ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "name", "salt", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 27 Jan 2013 19:33:21 UTC +00:00], ["email", "example@railstutorial.org"], ["encrypted_password", "61ec3b2cbcbd7db9f3330c683b88746713c95a8d3fc61b4952411777f9287b54"], ["name", "qwerty"], ["salt", "e733466e81db436fc15948774cbf804713daef963e6fb537d50b84999112ffc7"], ["updated_at", Sun, 27 Jan 2013 19:33:21 UTC +00:00]]
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 52ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-01-27 20:33:21 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered users/show.html.erb within layouts/application (9.0ms)
+Rendered layouts/_stylesheets.html.erb (18.1ms)
+Rendered layouts/_header.html.erb (1.0ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 41ms (Views: 33.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:33:21 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-01-27 20:33:34 +0100
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered users/show.html.erb within layouts/application (1.1ms)
+Rendered layouts/_stylesheets.html.erb (28.4ms)
+Rendered layouts/_header.html.erb (1.0ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 43ms (Views: 38.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/custom.css" for 127.0.0.1 at 2013-01-27 20:33:35 +0100
+Served asset /custom.css - 404 Not Found (1ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/custom.css"):
+  
+
+Rendered /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
